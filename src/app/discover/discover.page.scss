@@ -1,0 +1,31 @@
+ion-content.background {
+  --background: none;
+  background-image: url("../../assets/images/bg2.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+}
+
+ion-tab-bar {
+  background-color: rgba(238, 162, 0, 0.48);
+  --color: var(--ion-color-medium-shade);
+
+  ion-icon {
+    font-size: 60px;
+    color: white;
+  }
+
+}
+ion-tab-button {
+  background-color: transparent;
+  --color: var(--ion-color-medium-shade);
+
+
+
+
+}

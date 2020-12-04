@@ -1,0 +1,39 @@
+
+<ion-content class="ion-padding ion-margin-top background">
+  <div   >
+    <img margin-top="" src="../../assets/images/ExploRadioTextTransparent.png">
+
+
+    <div class="ion-text-center">
+      <img style="height: 100px;" src="../../assets/images/disc.png">
+
+
+
+
+  </div>
+  </div>
+  <div style="border: 2px solid #e78f84; border-radius: 6px">
+    <agm-map style="height: 300px"
+             [latitude]="lat"
+             [longitude]="lon"
+             [zoom]="15"
+             [disableDefaultUI]="false"
+             [zoomControl]="true">
+
+      <agm-marker
+                *ngFor="let d of data"
+              [longitude]="number(d.latitude)"
+                [label]="d.title"
+              [latitude]="number(d.longitude)">
+
+        <agm-info-window>
+          <strong  (click)="goToDetail(d)">Info</strong><br>
+
+        </agm-info-window>
+
+      </agm-marker>
+
+    </agm-map>
+
+  </div>
+</ion-content>

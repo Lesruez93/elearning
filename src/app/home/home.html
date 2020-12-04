@@ -1,0 +1,45 @@
+
+
+<ion-content padding="" class="user-profile-content background">
+  <ion-refresher slot="fixed"  (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            style="background-color: #F2F2F2"
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div   >
+    <img margin-top="" src="../../assets/images/ExploRadioTextTransparent.png">
+    <img style="margin-top: -50px" src="../../assets/images/line.png">
+    <div class="ion-text-center">
+      <h2 style="color: #ffffff;" >SEHENSWÜRDIGKEITEN
+        IN DEINER NÄHE</h2>
+    </div>
+
+  </div>
+  <div padding="" class="user-photos-section">
+
+    <ion-row class="pictures-row">
+      <ion-col class="picture-item" size="2" (click)="openDetail(d)" *ngFor="let d of data">
+        <app-image-shell style="border: 2px solid #e78f84" [mode]="'cover'" [src]="d.imagefile | encodeURI" class="user-photo-image">
+          <app-aspect-ratio [ratio]="{w:4, h:2}">
+          </app-aspect-ratio> <div text-center="" style="background-color: rgba(197,130,102,0.73); ">
+          <ion-label color="light" >{{d.title}}</ion-label>
+        </div>
+        </app-image-shell>
+
+
+      </ion-col>
+    </ion-row>
+
+    <div class="ion-text-center" *ngIf="data == undefined">
+      <h3 style="color: #F2F2F2"> <strong>Loading.. </strong></h3>
+    </div>
+
+  </div>
+
+
+</ion-content>

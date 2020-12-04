@@ -1,0 +1,42 @@
+
+
+
+<ion-content class="background">
+  <ion-toolbar color="none" >
+    <ion-searchbar #q
+        (ionChange)="change($event)"
+        (keyup.enter)="search(q.value)"
+        enterkeyhint="search" clearIcon="close-circle"
+        searchIcon="search" color="light"
+        placeholder="Search"
+        (ionCancel)="clear()" >
+    </ion-searchbar>
+  </ion-toolbar>
+  <div   >
+    <img margin-top="" src="../../assets/images/ExploRadioTextTransparent.png">
+    <div class="ion-text-center">
+      <img style="height: 80px;" src="../../assets/images/search.png">
+
+
+    </div>
+  </div>
+  <div style="padding-left: 20px">
+  <ion-list  style="background: transparent">
+    <ion-item color="none" (click)="openDetail(item)" lines="none" *ngFor="let item of data?.items">
+      <ion-thumbnail style="border-radius: 5px; border: 2px solid  #e78f84;" slot="start">
+        <img src="{{item.imagefile |encodeURI}}">
+      </ion-thumbnail>
+
+      <ion-label color="light"><h2>{{item.title}}</h2>
+        <ion-label color="light"><p>{{item.region}}</p></ion-label>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  </div>
+  <div class="ion-text-center" *ngIf="data == null">
+    <h3 style="color: #F2F2F2"> <strong>No results found.. </strong></h3>
+  </div>
+
+
+
+</ion-content>
