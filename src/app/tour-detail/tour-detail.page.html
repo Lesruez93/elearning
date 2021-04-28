@@ -40,7 +40,15 @@
     <div style=" border-right: thick solid #ffffff;">
       <p style="color: white">{{data.description}}</p>
 
+
     </div>
+      <div class="ion-text-center">
+          <ion-button (click)="nav(data)" color="secondary"  fill="solid">
+              <ion-icon  slot="end" name="pin">
+          </ion-icon>
+              Show on map
+      </ion-button>
+      </div>
 
   </div>
 

@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'discover', loadChildren: './discover/discover.module#DiscoverPageModule' },
   { path: 'search', loadChildren: './search/search.module#SearchPageModule' },
   { path: 'player', loadChildren: './player/player.module#PlayerPageModule' },
+  { path: 'map', loadChildren: './map/map.module#MapPageModule' },
+
 
 
 

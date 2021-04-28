@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GetterSetterService} from '../getter-setter.service';
-import {Router} from '@angular/router';
 import {NavController} from '@ionic/angular';
 import {PlayerService} from '../player.service';
 
@@ -104,5 +103,10 @@ export class TourDetailPage implements OnInit, AfterViewInit {
             this.isLoading = false;
             this.duration = Math.floor(this._player.duration);
         });
+    }
+
+    nav(data: any) {
+        this.gs.setParams(data);
+        this.router.navigateForward('/map')
     }
 }

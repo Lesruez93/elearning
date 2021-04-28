@@ -12,9 +12,9 @@ import {LocationAccuracy} from '@ionic-native/location-accuracy/ngx';
   styleUrls: ['./discover.page.scss'],
 })
 export class DiscoverPage implements OnInit {
-   data: any;
-   lon: number;
- lat: number;
+    data: any;
+    lon: number;
+    lat: number;
 
 
   constructor(
@@ -27,7 +27,7 @@ export class DiscoverPage implements OnInit {
   ) { }
 
     ngOnInit(): void {
-        this.loadData()
+        this.loadData();
 
         this.locationAccuracy.canRequest().then((canRequest) => {
 
@@ -75,7 +75,7 @@ export class DiscoverPage implements OnInit {
 
 
     goToDetail(d: any) {
-        this.getter.setParams(d)
+        this.getter.setParams(d);
         this.router.navigateByUrl('/tour-detail')
     }
 }
