@@ -4,13 +4,33 @@
 <ion-content class="background">
   <ion-toolbar color="none" >
     <ion-searchbar #q
-        (ionChange)="change($event)"
-        (keyup.enter)="search(q.value)"
-        enterkeyhint="search" clearIcon="close-circle"
+                   (click)="filter =true"
+      clearIcon="close-circle"
+                   [disabled]="searching"
         searchIcon="search" color="light"
         placeholder="Search"
-        (ionCancel)="clear()" >
+     >
     </ion-searchbar>
+    <div  [hidden]="!filter">
+      <div *ngIf="regions">
+    <ion-radio-group (ionChange)="search(region)"  [(ngModel)]="region" >
+
+      <ion-item *ngFor="let r of regions">
+        <ion-label>{{r.category}}</ion-label>
+        <ion-radio color="secondary"  mode="md" slot="start" [value]="r.category"></ion-radio>
+      </ion-item>
+
+
+
+    </ion-radio-group>
+      </div>
+      <div *ngIf="!regions" class="ion-text-center">
+        <ion-spinner name="lines"  color="success"></ion-spinner>
+      </div>
+    </div>
+    <div *ngIf="searching" class="ion-text-center">
+      <ion-spinner name="lines"  color="success"></ion-spinner>
+    </div>
   </ion-toolbar>
   <div   >
     <img margin-top="" src="../../assets/images/ExploRadioTextTransparent.png">
@@ -21,6 +41,9 @@
     </div>
   </div>
   <div style="padding-left: 20px">
+    <ion-list>
+
+    </ion-list>
   <ion-list  style="background: transparent">
     <ion-item color="none" (click)="openDetail(item)" lines="none" *ngFor="let item of data?.items">
       <ion-thumbnail style="border-radius: 5px; border: 2px solid  #e78f84;" slot="start">
