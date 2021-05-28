@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #1C1C1C;
+  --ion-color-primary: #02AA55;
   --ion-color-primary-rgb: 28,28,28;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255,255,255;
@@ -12,7 +12,7 @@
   --ion-color-primary-tint: #333333;
 
   /** secondary **/
-  --ion-color-secondary: #dca539;
+  --ion-color-secondary: #9a8ddc;
   --ion-color-secondary-rgb: 255,0,98;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255,255,255;
@@ -92,7 +92,7 @@
 
 :root {
   /* Set the font family of the entire app */
-  --ion-font-family: 'CaviarDreams';
+  --ion-font-family: 'VarelaRound';
 
   --app-background: #FFFFFF;
   --app-background-shade: var(--ion-background-color-step-50, #F2F2F2);
@@ -119,29 +119,9 @@ html.md {
 
 
 @font-face {
-  font-family: 'CaviarDreams';
+  font-family: 'VarelaRound';
   font-style: normal;
   font-weight: normal;
-  src: url('../assets/fonts/CaviarDreams.ttf');
+  src: url('../assets/fonts/VarelaRound-Regular.ttf');
 }
 
-@font-face {
-  font-family: 'CaviarDreams';
-  font-style: normal;
-  font-weight: bold;
-  src: url('../assets/fonts/CaviarDreams-bold.ttf');
-}
-
-@font-face {
-  font-family: 'CaviarDreams';
-  font-style: italic;
-  font-weight: normal;
-  src: url('../assets/fonts/CaviarDreams-Italic.ttf');
-}
-
-@font-face {
-  font-family: 'CaviarDreams';
-  font-style: italic;
-  font-weight: bold;
-  src: url('../assets/fonts/CaviarDreams-BoldItalic.ttf');
-}

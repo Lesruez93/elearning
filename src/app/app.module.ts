@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
-import {LocationAccuracy} from '@ionic-native/location-accuracy/ngx';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {Media} from '@ionic-native/media/ngx';
 
 
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -20,8 +18,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Geolocation} from '@ionic-native/geolocation/ngx';
-import {MusicControls} from '@ionic-native/music-controls/ngx';
+
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -48,10 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     SplashScreen,
     StatusBar,
-      LocationAccuracy,
-      MusicControls,
-      Media,
-      Geolocation,
+
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

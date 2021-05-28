@@ -31,7 +31,7 @@ export class AppComponent {
         .then(()=>{
 
           this.splashScreen.hide()
-          this.statusbar.backgroundColorByHexString("#e9c46b")
+          this.statusbar.backgroundColorByHexString("#02AA55")
 
 
 

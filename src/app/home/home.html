@@ -1,43 +1,40 @@
 
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding="" >
 
-<ion-content padding="" class="user-profile-content background">
-  <ion-refresher slot="fixed"  (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-            style="background-color: #F2F2F2"
-            pullingIcon="arrow-dropdown"
-            pullingText="Pull to refresh"
-            refreshingSpinner="circles"
-            refreshingText="Refreshing...">
-    </ion-refresher-content>
-  </ion-refresher>
 
-  <div   >
-    <img margin-top="" src="../../assets/images/ExploRadioTextTransparent.png">
-    <img style="margin-top: -50px" src="../../assets/images/line.png">
+
+
     <div class="ion-text-center">
-      <h2 style="color: #ffffff;" >SEHENSWÜRDIGKEITEN
-        IN DEINER NÄHE</h2>
-    </div>
+        <img style="width: 200px" src="./assets/images/app.jpeg" >
+      <h3 style="color:#02AA55;" >Corruption Reporting<br>
+        App</h3>
+
 
   </div>
-  <div padding="" class="user-photos-section">
+  <div padding="" >
 
     <ion-row class="pictures-row">
-      <ion-col class="picture-item" size="2" (click)="openDetail(d)" *ngFor="let d of data">
-        <app-image-shell style="border: 2px solid #e78f84" [mode]="'cover'" [src]="d.imagefile | encodeURI" class="user-photo-image">
-          <app-aspect-ratio [ratio]="{w:4, h:2}">
-          </app-aspect-ratio> <div text-center="" style="background-color: rgba(197,130,102,0.73); ">
-          <ion-label color="light" >{{d.title}}</ion-label>
-        </div>
-        </app-image-shell>
 
+      <ion-col class="picture-item" size="6"  *ngFor="let d of data">
+        <ion-card routerLink="{{d.page}}">
+        <app-image-shell [mode]="'cover'" [src]="d.image" class="user-photo-image">
+          <app-aspect-ratio [ratio]="{w:1, h:1}">
+          </app-aspect-ratio>
+        </app-image-shell>
+        <div class=" ion-text-center">  <ion-label color="dark" >{{d.text}}</ion-label></div>
+
+        </ion-card>
 
       </ion-col>
+
     </ion-row>
 
-    <div class="ion-text-center" *ngIf="data == undefined">
-      <h3 style="color: #F2F2F2"> <strong>Loading.. </strong></h3>
-    </div>
+
 
   </div>
 
