@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Image Viewer </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="gs.getParams().file"/>
+
+</ion-content>

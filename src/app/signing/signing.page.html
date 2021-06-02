@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Sign in</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="floating">Email address</ion-label>
+    <ion-input required="" type="email" [(ngModel)]="email">
+
+    </ion-input>
+  </ion-item>
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="stacked">Password</ion-label>
+    <ion-input required="" type="password" [(ngModel)]="password"></ion-input>
+
+
+  </ion-item>
+  <div class="ion-margin-top">
+
+    <ion-button  (click)="submit()" expand="block" color="primary" fill="solid">Submit</ion-button></div>
+  <div class="ion-text-center ion-margin">
+    <a routerLink="/signup" ><ion-label  >Don't have an account sign up here</ion-label></a>
+  </div>
+</ion-content>

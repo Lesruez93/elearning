@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Chat </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-footer mode="md">
+  <div >
+
+
+  <ion-row>
+    <ion-col size="10">
+    <ion-textarea #chat_input
+                  [(ngModel)]="message"
+                  (keyup.enter)="addocument()"
+                  (focusin)="onFocus()"
+                  placeholder="Write your message">
+
+    </ion-textarea>
+    </ion-col>
+    <ion-col size="2">
+    <ion-button class="ion-margin-top" fill="clear"   (click)="addocument()" >
+      <ion-icon size="large" name="paper-plane"></ion-icon>
+    </ion-button>
+    </ion-col>
+  </ion-row>
+
+  </div>
+
+</ion-footer>
+
+<ion-content class="background" >
+
+  <div  class="message-wrap">
+    <ion-item color="none"  lines="none"  *ngFor="let msg of msgs"
+              class="message"
+              [class.right]=" msg.uid === uid"
+              [class.left]=" msg.uid != uid">
+
+      <div class="msg-detail">
+        <div class="msg-info">
+
+          <small style="color: #1e2023;">
+            {{msg?.id |amTimeAgo }} </small>
+          <small>({{msg.name}})</small>
+        </div>
+        <div class="msg-content" padding="" >
+          <span class="triangle"></span>
+
+          <p  style="color: #1a0908" class="line-breaker ">{{msg?.message}}</p>
+
+        </div>
+
+
+      </div>
+    </ion-item>
+  </div>
+
+</ion-content>
+

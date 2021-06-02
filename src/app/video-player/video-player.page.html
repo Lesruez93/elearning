@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar mode="ios" color="primary">
+        <ion-title>Video Player </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-text-center">
+    <video #myMedia
+          autoplay
+          controls
+
+           src="{{gs.getParams().file}}"
+           >
+    </video>
+    </div>
+</ion-content>

@@ -2,16 +2,21 @@
 <ion-header>
   <ion-toolbar mode="ios" color="primary">
     <ion-title>Home</ion-title>
+
+          <ion-buttons  slot="start">
+              <ion-menu-toggle [autoHide]="true">   <ion-icon size="large" name="menu"></ion-icon></ion-menu-toggle>
+          </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
-<ion-content padding="" >
+<ion-content padding=""  >
 
 
 
 
     <div class="ion-text-center">
-        <img style="width: 200px" src="./assets/images/app.jpeg" >
-      <h3 style="color:#02AA55;" >Corruption Reporting<br>
+
+      <h3 style="color:#02AA55;" >E-Learning <br>
         App</h3>
 
 
@@ -20,18 +25,24 @@
 
     <ion-row class="pictures-row">
 
-      <ion-col class="picture-item" size="6"  *ngFor="let d of data">
-        <ion-card routerLink="{{d.page}}">
-        <app-image-shell [mode]="'cover'" [src]="d.image" class="user-photo-image">
-          <app-aspect-ratio [ratio]="{w:1, h:1}">
-          </app-aspect-ratio>
-        </app-image-shell>
-        <div class=" ion-text-center">  <ion-label color="dark" >{{d.text}}</ion-label></div>
+      <ion-col class="picture-item" size="6"  >
+        <ion-card routerLink="/material">
+          <div class=" ion-text-center">     <ion-icon color="primary" name="book" size="large"></ion-icon></div>
+        <div class=" ion-text-center">  <ion-label color="dark" >Materials</ion-label></div>
 
         </ion-card>
 
       </ion-col>
 
+
+        <ion-col *ngIf="user?.role == 'Lecturer'" class="picture-item" size="6"  >
+            <ion-card routerLink="/add">
+                <div class=" ion-text-center">     <ion-icon color="primary" name="add" size="large"></ion-icon></div>
+                <div class=" ion-text-center">  <ion-label color="dark" >Add material</ion-label></div>
+
+            </ion-card>
+
+        </ion-col>
     </ion-row>
 
 

@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar mode="ios" color="primary">
+        <ion-title>Materials</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+     <ion-item (click)="goTo(m)" detail="true" *ngFor="let m of materials" lines="full">
+      <ion-icon size="large" color="primary" [name]="iconify(m.file_type)" slot="start"></ion-icon>
+      <ion-label>{{m.notes}}</ion-label>
+         <ion-icon *ngIf="m.uid == uid" color="danger" (click)="delete(m)" name="trash" slot="end"></ion-icon>
+
+     </ion-item>
+
+  </ion-list>
+</ion-content>

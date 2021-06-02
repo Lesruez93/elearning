@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import {Component} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {Platform} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +13,19 @@ export class AppComponent {
 
 
   textDir = 'ltr';
+  list = [
+    {name:'Home',icon:'home' ,route:'/home'},
+    {name:'Chat',icon:'chatbubbles',route:'/inbox'},
+    // {name:'Categories',icon:'apps',route:'/categories'},
+    {name:'Profile',icon:'person',route:'/profile'},
+    {name:'Logout',icon:'power' ,route:'/signin'}
+    ];
+
 
   constructor(public translate: TranslateService,
-              private splashScreen:SplashScreen,
+
               private platform:Platform,
-              private statusbar: StatusBar,
+
 
   ) {
     this.initializeApp();
@@ -30,8 +36,6 @@ export class AppComponent {
     this.platform.ready()
         .then(()=>{
 
-          this.splashScreen.hide()
-          this.statusbar.backgroundColorByHexString("#02AA55")
 
 
 

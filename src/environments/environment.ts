@@ -5,19 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyC5QK355uuknu0_ldVxFqqNqgp9oJi_eLc',
-    authDomain: 'ion4fullpwa.firebaseapp.com',
-    databaseURL: 'https://ion4fullpwa.firebaseio.com',
-    projectId: 'ion4fullpwa',
-    storageBucket: 'ion4fullpwa.appspot.com',
-    messagingSenderId: '813357714189'
-    // apiKey: 'AIzaSyCgrWOAJdIpE98-irq_o4DIkcoc47jiytY',
-    // authDomain: 'dev-ion4fullpwa.firebaseapp.com',
-    // databaseURL: 'https://dev-ion4fullpwa.firebaseio.com',
-    // projectId: 'dev-ion4fullpwa',
-    // storageBucket: 'dev-ion4fullpwa.appspot.com',
-    // messagingSenderId: '110862065236'
-  }
+    apiKey: "AIzaSyBFjdXFSFIkaYkyef62UZxLi5WFw_30cdE",
+    authDomain: "e-leaning-ab18a.firebaseapp.com",
+    projectId: "e-leaning-ab18a",
+    storageBucket: "e-leaning-ab18a.appspot.com",
+    messagingSenderId: "113175585535",
+    appId: "1:113175585535:web:a559a0ca376a6cf8b422ca"
+
+}
 };
 
 /*

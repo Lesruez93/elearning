@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {AlertController, NavController} from '@ionic/angular';
-
-import {TranslateService} from '@ngx-translate/core';
-import {HttpClient} from '@angular/common/http';
+import {NavController} from '@ionic/angular';
 import {GetterSetterService} from '../getter-setter.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -18,43 +17,46 @@ import {GetterSetterService} from '../getter-setter.service';
   ],
 })
 export class HomePage implements OnInit {
-    ngOnInit(): void {
-
-    }
 
 
-    data: any = [{image:'./assets/images/icon.png',text:'Report',page:'/report'},
-        {image:'./assets/images/about.png',text:'About',page:'/about'},
-        {image:'./assets/images/where.png',text:'Where to report',page:'/about'},
-        {image:'./assets/images/question.png',text:'Ask',page:'/about'}];
+
+    data: any = [{image:'book',text:'Materials',page:'/material'},
+        {image:'add',text:'Add material',page:'/add'}];
+
+
 
     private lat: number;
     private lon: number;
+    user: any;
+    private uid: any;
 
 
     constructor(
         private route: ActivatedRoute,
-        public translate: TranslateService,
         private router: Router,
         private navCtrl: NavController,
         private getter: GetterSetterService,
-        public alertController: AlertController,
-        private http: HttpClient,
+        private afs:AngularFirestore,
+        public gs:GetterSetterService,
+        private afAuth:AngularFireAuth,
     ) {
 
     }
 
 
 
+    ngOnInit(): void {
+        this.afAuth.authState.subscribe((res:any)=>{
+            this.uid = res.uid;
+            this.afs.collection('users').doc(res.uid).valueChanges().subscribe((data:any)=>{
+                this.user = data;
 
+    })})}
 
     al() {
         //  alert('da')
     }
 
-    openDetail(value) {
-        this.getter.setParams(value)
-        this.router.navigateByUrl('/tour-detail')
-    }
+
 
 }

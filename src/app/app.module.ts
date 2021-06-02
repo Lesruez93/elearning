@@ -10,15 +10,18 @@ import {AppComponent} from './app.component';
 
 import {ServiceWorkerModule} from '@angular/service-worker';
 
-import {environment} from '../environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
 
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
-
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
+import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -31,7 +34,13 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+      AngularFirestoreModule.enablePersistence(),
+      AngularFireStorageModule,
     AppRoutingModule,
+      AngularFireAuthGuardModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     TranslateModule.forRoot({
@@ -43,10 +52,10 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
-    SplashScreen,
-    StatusBar,
 
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
   ],
   bootstrap: [AppComponent]
 })
