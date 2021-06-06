@@ -17,7 +17,7 @@ export class AppComponent {
   textDir = 'ltr';
   list = [
     {name: 'Home', icon: 'home' , route: '/home'},
-     {name:'Dashboard',icon:'apps',route:'/dashboard', admin:true},
+     // {name:'Dashboard',icon:'apps',route:'/dashboard', admin:true},
     {name: 'Notifications', icon: 'notifications', route: '/notifications'},
     {name: 'Chat', icon: 'chatbubbles', route: '/inbox'},
     {name: 'Profile', icon: 'person', route: '/profile'},

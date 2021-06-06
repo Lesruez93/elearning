@@ -10,12 +10,21 @@
         </ion-header>
         <ion-content>
             <ion-list>
+                <a *ngIf="user?.role == 'admin' || user?.role == 'Lecturer'" routerLink="/dashboard">
+                    <ion-item lines="full">
+                        <ion-icon color="primary" name="apps" slot="start"></ion-icon>
+                        <ion-label>Dashboard</ion-label>
+                    </ion-item>
+                </a>
+
              <a  *ngFor="let i of list" [routerLink]="i.route">
                  <ion-item lines="full">
                     <ion-icon color="primary" [name]="i.icon" slot="start"></ion-icon>
                     <ion-label>{{i.name}}</ion-label>
                 </ion-item>
              </a>
+
+
 
                 <a *ngIf="user?.role == 'admin'" routerLink="/modules">
                     <ion-item lines="full">

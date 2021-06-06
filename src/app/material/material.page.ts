@@ -101,4 +101,12 @@ export class MaterialPage implements OnInit {
   disapprove(m: any) {
     this.afs.collection('materials').doc(m.docid).update({status:"disapproved"})
   }
+
+  rateUp(m: any) {
+    
+  }
+
+  rateDown(m: any) {
+    
+  }
 }
