@@ -20,12 +20,29 @@ export class LectureresPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.afs.collection('users',ref => ref.where('role','==','Lecturer').where('status','==',this.route.snapshot.paramMap.get('id'))).valueChanges({idField:"docicd"}).subscribe((data:any)=>{
-      this.users = data.length;
+    this.afs.collection('users',ref => ref.where('role','==','Lecturer').where('status','==',this.route.snapshot.paramMap.get('id'))).valueChanges({idField:"docid"}).subscribe((data:any)=>{
+      this.users = data;
     });
 
 
 
   }
+    delete(m: any) {
+        this.afs.collection('users').doc(m.docid).delete()
+    }
 
+    approve(m: any) {
+        this.afs.collection('users').doc(m.docid).update({status:"approved"});
+        const data = {
+            message:"Your reg  has been approved",
+            time:Date.now(),
+            uid:m.uid
+        };
+
+        this.afs.collection('notifications').add(data).then()
+    }
+
+    disapprove(m: any) {
+        this.afs.collection('users').doc(m.docid).update({status:"disapproved"})
+    }
 }

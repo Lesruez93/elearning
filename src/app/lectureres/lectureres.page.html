@@ -10,13 +10,20 @@
 
 <ion-content>
 <ion-list>
-  <ion-item routerLink="/chat/{{u.uid}}" detail="" lines="full" *ngFor="let u of users">
-    <ion-avatar slot="start">
-      <ion-img src="https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"></ion-img>
-    </ion-avatar>
+  <ion-item detail="" lines="full" *ngFor="let u of users">
+    <ion-thumbnail slot="start">
+      <ion-img  [src]="u?.idDocument"></ion-img>
+    </ion-thumbnail>
     <ion-label>
-      {{u.name}}
+    <h4>  {{u.name}}
+
+    </h4>
+      <p> {{u?.ec_number}}</p>
     </ion-label>
+    <ion-icon   *ngIf="u.status == 'disapproved' || u.status == 'pending' " color="success" (click)="approve(u)" name="checkmark-circle" slot="end"></ion-icon>
+    <ion-icon   *ngIf="u.status == 'approved' "  color="warning" (click)="disapprove(u)" name="close-circle" slot="end"></ion-icon>
+    <ion-icon   color="danger" (click)="delete(u)" name="trash" slot="end"></ion-icon>
+
   </ion-item>
   </ion-list>
 </ion-content>

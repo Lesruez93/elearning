@@ -36,7 +36,7 @@
 
 
         <ion-col *ngIf="user?.role == 'Lecturer'" class="picture-item" size="6"  >
-            <ion-card routerLink="/add">
+            <ion-card (click)="add()">
                 <div class=" ion-text-center">     <ion-icon color="primary" name="add" size="large"></ion-icon></div>
                 <div class=" ion-text-center">  <ion-label color="dark" >Add material</ion-label></div>
 

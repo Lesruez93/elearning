@@ -22,10 +22,10 @@ export class MaterialPage implements OnInit {
   ngOnInit() {
     this.afAuth.authState.subscribe((res:any)=>{
       this.uid = res.uid;
-      this.afs.collection('users').doc(res.uid).valueChanges({idField:"docicd"}).subscribe((data:any)=>{
+      this.afs.collection('users').doc(res.uid).valueChanges({idField:"docid"}).subscribe((data:any)=>{
         this.user = data;
-        if (data.role == 'admin'){
-          this.afs.collection('materials',ref => ref.where('department','==',data.department).orderBy('date','asc')).valueChanges({idField:'docid'}).subscribe((data)=>{
+        if (data.role != 'admin'){
+          this.afs.collection('materials',ref => ref.where('department','==',data.department).where('status', '==','approved').orderBy('date','asc')).valueChanges({idField:'docid'}).subscribe((data)=>{
             this.materials = data
           })
         } else {

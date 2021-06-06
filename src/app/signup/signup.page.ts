@@ -78,6 +78,7 @@ export class SignupPage implements OnInit {
                               department:this.department,
                               name:this.name,
                               inst:this.inst,
+                              status:'pending',
                               uid:res.user.uid,
                               ec_number:this.ec_number,
                               idDocument:this.idDocument,

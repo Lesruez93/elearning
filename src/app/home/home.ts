@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {NavController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {GetterSetterService} from '../getter-setter.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAuth} from '@angular/fire/auth';
@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
         private afs:AngularFirestore,
         public gs:GetterSetterService,
         private afAuth:AngularFireAuth,
+        private alert:AlertController,
     ) {
 
     }
@@ -59,5 +60,16 @@ export class HomePage implements OnInit {
     }
 
 
+   async add() {
+        if (this.user.status != 'approved'){
+            const  a = await this.alert.create({
+                message:"You cant add  an ebook. your registration is awaiting approval",
+                header:"Error",
+                buttons: ['OK']
+            });
 
+
+            await  a.present()
+        }
+    }
 }
