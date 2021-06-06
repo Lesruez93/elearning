@@ -10,13 +10,13 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  private user: any;
-  private uid: any;
+  public user: any;
+  public uid: any;
 
-  constructor( private afs:AngularFirestore,
-               private nav:NavController,
+  constructor( public afs:AngularFirestore,
+               public nav:NavController,
                public gs:GetterSetterService,
-               private afAuth:AngularFireAuth) { }
+               public afAuth:AngularFireAuth) { }
 
   ngOnInit() {
 

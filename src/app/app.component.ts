@@ -27,15 +27,15 @@ export class AppComponent {
     // {name: 'Logout', icon: 'power' , route: '/signin'},
 
   ];
-  private uid: any;
-  private user: any;
+  public uid: any;
+  public user: any;
 
 
   constructor(public translate: TranslateService,
-              private afs:AngularFirestore,
-              private nav:NavController,
-              private afAuth:AngularFireAuth,
-              private platform: Platform,
+              public afs:AngularFirestore,
+              public nav:NavController,
+              public afAuth:AngularFireAuth,
+              public platform: Platform,
 
 
   ) {

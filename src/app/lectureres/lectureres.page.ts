@@ -44,5 +44,13 @@ export class LectureresPage implements OnInit {
 
     disapprove(m: any) {
         this.afs.collection('users').doc(m.docid).update({status:"disapproved"})
+        this.afs.collection('users').doc(m.docid).update({status:"approved"});
+        const data = {
+            message:"Your reg  has been disapproved",
+            time:Date.now(),
+            uid:m.uid
+        };
+
+        this.afs.collection('notifications').add(data).then()
     }
 }
