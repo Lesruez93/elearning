@@ -18,12 +18,17 @@ export class AddPage implements OnInit {
   file_type: any = "Document";
   notes: any;
   file: any;
-   uploadPercent: Observable<number | 0>;
+    levels: any = ["1.1","1.2","2.2","2.2","3.1","3.2","4.1","4.2"];
+
+    uploadPercent: Observable<number | 0>;
    getCancelButton: boolean;
    upload: Subscription;
    downloadURL: Observable<any>;
      uid: any;
      user: any;
+    modules: any;
+    module: any;
+    level: any;
 
 
   constructor(private storage:AngularFireStorage,
@@ -40,6 +45,9 @@ export class AddPage implements OnInit {
        this.user = data
    })
   })
+      this.afs.collection("modules").valueChanges({idField:"docid"}).subscribe((res:any)=>{
+          this.modules = res
+      });
   }
  async uploadFile(event) {
 
@@ -83,7 +91,7 @@ export class AddPage implements OnInit {
   }
 
  async submit() {
-      if (this.file ) {
+      if (this.file && this.module ) {
           const loading = await this.loadingCtrl.create({
               message:'Submitting',
               duration:10000
@@ -95,11 +103,20 @@ export class AddPage implements OnInit {
               name:this.user.name,
               department:this.user.department,
               uid:this.uid,
+              status:'pending',
+              module:this.module,
               notes:this.notes,
               time:Date.now()
           };
           this.afs.collection('materials').add(data).then(()=>{
+              const data = {
+                  message:"New file Upload",
+                  page:"material",
+                  time:Date.now(),
+                  uid:"wxZICzTTiyQI3H5YovXEpbKLbvk1"
+              };
 
+              this.afs.collection('notifications').add(data).then()
               loading.dismiss();
               this.toast('Done','success');
               this.nav.pop()

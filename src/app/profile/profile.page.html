@@ -9,6 +9,37 @@
 </ion-header>
 
 <ion-content padding="">
+
+
+<ion-row>
+  <ion-col size="4">
+    <ion-card class="ion-padding">
+      <h5>Full name:         {{user?.name}}</h5>
+      <h5>Email:         {{user?.email}}</h5>
+    </ion-card>
+  </ion-col>
+  <ion-col size="4">
+        <ion-card class="ion-padding">
+          <div style="margin-left: 30%">
+        <ion-avatar>
+          <ion-img  src="https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"></ion-img>
+        </ion-avatar>
+          </div>
+        </ion-card>
+  </ion-col>
+  <ion-col size="4">
+    <ion-card class="ion-padding">
+<h4>Role:         {{user?.role}}</h4>
+      <h4>Level:         {{user?.level}}</h4>
+      <h4>Institution:         {{user?.inst}}</h4>
+      <h4>Faculty:         {{user?.department}}</h4>
+
+
+
+    </ion-card>
+  </ion-col>
+</ion-row>
+
 <ion-button (click)="delete()" expand="block" color="danger">
   Delete Account
 </ion-button>

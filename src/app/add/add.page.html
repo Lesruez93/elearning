@@ -10,6 +10,25 @@
 
 <ion-content class="ion-padding">
 
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="floating"> Module </ion-label>
+
+    <ion-select [(ngModel)]="module">
+      <ion-select-option  *ngFor="let p of modules" [value]="p.title">
+        {{p.title}}
+      </ion-select-option>
+    </ion-select>
+
+  </ion-item>
+
+  <ion-item   class="ion-margin-bottom">
+    <ion-label position="floating">Level</ion-label>
+    <ion-select [(ngModel)]="level">
+      <ion-select-option  *ngFor="let l of levels" [value]="l">
+        {{l}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-item>
 
     <ion-label class="ion-text-center" position="stacked"> Upload file</ion-label>

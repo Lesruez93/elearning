@@ -12,6 +12,7 @@ import {GetterSetterService} from '../getter-setter.service';
 export class MaterialPage implements OnInit {
   materials: any;
   private uid: any;
+  user: any;
 
   constructor( private afs:AngularFirestore,
                private nav:NavController,
@@ -22,10 +23,19 @@ export class MaterialPage implements OnInit {
     this.afAuth.authState.subscribe((res:any)=>{
       this.uid = res.uid;
       this.afs.collection('users').doc(res.uid).valueChanges({idField:"docicd"}).subscribe((data:any)=>{
-       this.afs.collection('materials',ref => ref.where('department','==',data.department).orderBy('date','asc')).valueChanges().subscribe((data)=>{
-         this.materials = data
-       })})
-    })
+        this.user = data;
+        if (data.role == 'admin'){
+          this.afs.collection('materials',ref => ref.where('department','==',data.department).orderBy('date','asc')).valueChanges({idField:'docid'}).subscribe((data)=>{
+            this.materials = data
+          })
+        } else {
+          this.afs.collection('materials',ref => ref.orderBy('date','asc')).valueChanges({idField:'docid'}).subscribe((data)=>{
+            this.materials = data
+          })
+        }
+
+      })
+})
   }
 
   iconify(file_type: any) {
@@ -75,5 +85,20 @@ export class MaterialPage implements OnInit {
 
   delete(m: any) {
     this.afs.collection('materials').doc(m.docid).delete()
+  }
+
+  approve(m: any) {
+    this.afs.collection('materials').doc(m.docid).update({status:"approved"});
+    const data = {
+      message:"You file titled "+ m.notes+ " has been approved",
+      time:Date.now(),
+      uid:m.uid
+    };
+
+    this.afs.collection('notifications').add(data).then()
+  }
+
+  disapprove(m: any) {
+    this.afs.collection('materials').doc(m.docid).update({status:"disapproved"})
   }
 }

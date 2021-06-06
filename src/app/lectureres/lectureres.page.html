@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Lectures </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item routerLink="/chat/{{u.uid}}" detail="" lines="full" *ngFor="let u of users">
+    <ion-avatar slot="start">
+      <ion-img src="https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      {{u.name}}
+    </ion-label>
+  </ion-item>
+  </ion-list>
+</ion-content>

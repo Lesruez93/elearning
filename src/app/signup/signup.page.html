@@ -32,18 +32,50 @@
       </ion-select>
 
     </ion-item>
+    <ion-item *ngIf="role == 'Lecturer'" class="ion-margin-bottom">
+        <ion-label position="floating"> Upload ID for verification</ion-label>
+        <ion-input  placeholder="Choose File"  accept="image/*" (change)="uploadFile($event)" type="file" ></ion-input>
+
+    </ion-item>
+
+    <ion-item  *ngIf="role == 'Lecturer'" class="ion-margin-bottom">
+        <ion-label position="floating">EC Number</ion-label>
+        <ion-input required=""  [(ngModel)]="ec_number"></ion-input>
+
+    </ion-item>
+
+    <ion-item  *ngIf="role == 'Student'" class="ion-margin-bottom">
+        <ion-label position="floating">Level</ion-label>
+        <ion-select [(ngModel)]="level">
+            <ion-select-option  *ngFor="let l of levels" [value]="l">
+                {{l}}
+            </ion-select-option>
+        </ion-select>
+    </ion-item>
   <ion-item class="ion-margin-bottom">
-    <ion-label position="floating"> Department</ion-label>
+    <ion-label position="floating"> Institutions</ion-label>
+
+    <ion-select [(ngModel)]="inst">
+      <ion-select-option  *ngFor="let p of insts" [value]="p.title">
+        {{p.title}}
+      </ion-select-option>
+    </ion-select>
+
+  </ion-item>
+
+
+  <ion-item class="ion-margin-bottom">
+    <ion-label position="floating"> Faculty</ion-label>
 
     <ion-select [(ngModel)]="department">
-      <ion-select-option  *ngFor="let p of dpts" [value]="p">
-        {{p}}
+      <ion-select-option  *ngFor="let p of facs" [value]="p.title">
+        {{p.title}}
       </ion-select-option>
     </ion-select>
 
   </ion-item>
     <ion-item class="ion-margin-bottom">
-      <ion-label position="stacked">Password</ion-label>
+      <ion-label position="floating">Password</ion-label>
       <ion-input required="" type="password" [(ngModel)]="password"></ion-input>
 
     </ion-item>

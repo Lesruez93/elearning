@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Add Faculties </ion-title>
+    <ion-buttons  slot="start">
+      <ion-menu-toggle [autoHide]="true">   <ion-icon size="large" name="menu"></ion-icon></ion-menu-toggle>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ng-container  *ngIf="!addFac">
+  <ion-button  class="ion-margin-top" (click)="addFac = true"  expand="block" color="primary" fill="solid">Add Faculties</ion-button>
+
+    <ion-item *ngFor="let f of facs">
+      <ion-label>{{f.title}}</ion-label>
+      <ion-icon name="trash"  (click)="delete(f)" color="danger" size="large" slot="end"></ion-icon>
+    </ion-item>
+  </ng-container>
+
+    <ng-container *ngIf="addFac">
+  <ion-item>
+
+          <ion-label position="floating"> Faculty name</ion-label>
+          <ion-input [(ngModel)]="fac"></ion-input>
+        </ion-item>
+
+  <ion-button  class="ion-margin-top" (click)="submit()"  expand="block" color="primary" fill="solid">Submit</ion-button>
+</ng-container>
+</ion-content>

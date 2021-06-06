@@ -18,6 +18,13 @@ const routes: Routes = [
   { path: 'inbox', loadChildren: './inbox/inbox.module#InboxPageModule' },
   { path: 'chat/:id', loadChildren: './chat/chat.module#ChatPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'faculties', loadChildren: './faculties/faculties.module#FacultiesPageModule' },
+  { path: 'institutions', loadChildren: './institutions/institutions.module#InstitutionsPageModule' },
+  { path: 'lecturers/:id', loadChildren: './lectureres/lectureres.module#LectureresPageModule' },
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },  { path: 'modules', loadChildren: './modules/modules.module#ModulesPageModule' },
+  { path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule' },
+
+
 
 
 

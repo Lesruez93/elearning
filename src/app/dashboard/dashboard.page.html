@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons  slot="start">
+      <ion-menu-toggle [autoHide]="true">   <ion-icon size="large" name="menu"></ion-icon></ion-menu-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row>
+  <ion-col sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card >
+<ion-card-header>
+  <h5 class="ion-text-center">  Pending
+    <br>
+    Ebooks</h5>
+</ion-card-header>
+      <ion-card-content>
+        <h1 class="ion-text-center">{{pending}}</h1>
+      </ion-card-content>
+    </ion-card>
+
+</ion-col>
+  <ion-col sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card>
+      <ion-card-header>
+        <h5 class="ion-text-center">  Approved <br> Ebooks</h5>
+      </ion-card-header>
+      <ion-card-content >
+        <h1 class="ion-text-center">{{approved}}</h1>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+  <ion-col sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+  <ion-card>
+    <ion-card-header>
+      <h5 class="ion-text-center">   Disapproved
+        <br>
+        Ebooks</h5>
+    </ion-card-header>
+    <ion-card-content>
+      <h1 class="ion-text-center">{{dis}}</h1>
+    </ion-card-content>
+  </ion-card>
+</ion-col>
+
+  <ion-col sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card>
+      <ion-card-header>
+        <h5 class="ion-text-center">Students
+          <br>
+         </h5>
+      </ion-card-header>
+      <ion-card-content>
+        <h1 class="ion-text-center">{{students}}</h1>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <ion-col *ngIf="user.role == 'admin'" sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card routerLink="/lecturers/approved">
+      <ion-card-header>
+        <h5 class="ion-text-center">Approved <br> Lectures
+       </h5>
+      </ion-card-header>
+      <ion-card-content>
+        <h1 class="ion-text-center">{{lectures}}</h1>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+  <ion-col sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card routerLink="/lecturers/pending">
+      <ion-card-header>
+        <h5 class="ion-text-center"> Lectures <br>Pending Approval
+        </h5>
+      </ion-card-header>
+      <ion-card-content>
+        <h1 class="ion-text-center">{{lecturesP}}</h1>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+
+  <ion-col *ngIf="user.role != 'admin'" sizeXl="3" sizeLg="3" sizeXs="6" sizeMd="6" sizeSm="6">
+    <ion-card routerLink="/lecturers/pending">
+      <ion-card-header>
+        <h5 class="ion-text-center"> Files
+        </h5>
+      </ion-card-header>
+      <ion-card-content>
+        <h1 class="ion-text-center">{{lecturesP}}</h1>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+</ion-content>

@@ -21,7 +21,8 @@ export class HomePage implements OnInit {
 
 
     data: any = [{image:'book',text:'Materials',page:'/material'},
-        {image:'add',text:'Add material',page:'/add'}];
+        {image:'add',text:'Add material',page:'/add'},
+    ];
 
 
 

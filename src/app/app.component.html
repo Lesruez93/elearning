@@ -1,6 +1,6 @@
 <ion-app dir="{{textDir}}">
     <ion-split-pane contentId="main">
-    <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+    <ion-menu  side="start" menuId="custom" contentId="main" class="my-custom-menu">
         <ion-header >
             <ion-toolbar mode="ios"  color="primary">
                 <ion-title>E Learning</ion-title>
@@ -10,11 +10,39 @@
         </ion-header>
         <ion-content>
             <ion-list>
-             <a  *ngFor="let i of list" [routerLink]="i.route">   <ion-item lines="full">
+             <a  *ngFor="let i of list" [routerLink]="i.route">
+                 <ion-item lines="full">
                     <ion-icon color="primary" [name]="i.icon" slot="start"></ion-icon>
                     <ion-label>{{i.name}}</ion-label>
                 </ion-item>
              </a>
+
+                <a *ngIf="user?.role == 'admin'" routerLink="/modules">
+                    <ion-item lines="full">
+                        <ion-icon color="primary" name="book" slot="start"></ion-icon>
+                        <ion-label>Modules</ion-label>
+                    </ion-item>
+                </a>
+                <a  *ngIf="user?.role == 'admin'"  routerLink="/faculties">
+                    <ion-item lines="full">
+                        <ion-icon color="primary" name="book" slot="start"></ion-icon>
+                        <ion-label> Faculties</ion-label>
+                    </ion-item>
+                </a>
+
+                <a  *ngIf="user?.role == 'admin'" routerLink="/institutions">
+                    <ion-item lines="full">
+                        <ion-icon color="primary" name="school" slot="start"></ion-icon>
+                        <ion-label>Institutions</ion-label>
+                    </ion-item>
+                </a>
+
+                <a   routerLink="/signin">
+                    <ion-item lines="full">
+                        <ion-icon color="primary" name="power" slot="start"></ion-icon>
+                        <ion-label>Logout</ion-label>
+                    </ion-item>
+                </a>
             </ion-list>
         </ion-content>
     </ion-menu>

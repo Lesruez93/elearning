@@ -10,10 +10,19 @@
 
 <ion-content>
   <ion-list>
-     <ion-item (click)="goTo(m)" detail="true" *ngFor="let m of materials" lines="full">
+
+     <ion-item  detail="true" *ngFor="let m of materials" lines="full">
+         <ng-container (click)="goTo(m)">
       <ion-icon size="large" color="primary" [name]="iconify(m.file_type)" slot="start"></ion-icon>
+         </ng-container>
       <ion-label>{{m.notes}}</ion-label>
+         <ion-icon  *ngIf="m.status == 'disapproved' || m.status == 'pending'" color="success" (click)="approve(m)" name="checkmark-circle" slot="end"></ion-icon>
+         <ion-icon *ngIf="m.status == 'approved'"  color="warning" (click)="disapprove(m)" name="close-circle" slot="end"></ion-icon>
          <ion-icon *ngIf="m.uid == uid" color="danger" (click)="delete(m)" name="trash" slot="end"></ion-icon>
+
+         <ion-icon *ngIf="m.uid != uid" color="medium" (click)="rateUp(m)" name="add" slot="end"></ion-icon>
+         <ion-icon *ngIf="m.uid != uid" color="danger" (click)="rateDown(m)" name="minus" slot="end"></ion-icon>
+
 
      </ion-item>
 

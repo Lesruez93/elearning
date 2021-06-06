@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,27 +16,42 @@ export class AppComponent {
 
   textDir = 'ltr';
   list = [
-    {name:'Home',icon:'home' ,route:'/home'},
-    {name:'Chat',icon:'chatbubbles',route:'/inbox'},
-    // {name:'Categories',icon:'apps',route:'/categories'},
-    {name:'Profile',icon:'person',route:'/profile'},
-    {name:'Logout',icon:'power' ,route:'/signin'}
-    ];
+    {name: 'Home', icon: 'home' , route: '/home'},
+     {name:'Dashboard',icon:'apps',route:'/dashboard', admin:true},
+    {name: 'Notifications', icon: 'notifications', route: '/notifications'},
+    {name: 'Chat', icon: 'chatbubbles', route: '/inbox'},
+    {name: 'Profile', icon: 'person', route: '/profile'},
+    // {name:'Modules',icon:'book',route:'/modules', admin:true},
+    // {name:'Faculties',icon:'book',route:'/faculties', admin:true},
+    // {name:'Institutions',icon:'school',route:'/institutions', admin:true},
+    // {name: 'Logout', icon: 'power' , route: '/signin'},
+
+  ];
+  private uid: any;
+  private user: any;
 
 
   constructor(public translate: TranslateService,
-
-              private platform:Platform,
+              private afs:AngularFirestore,
+              private nav:NavController,
+              private afAuth:AngularFireAuth,
+              private platform: Platform,
 
 
   ) {
+    this.afAuth.authState.subscribe((res:any)=>{
+      this.uid = res.uid;
+      this.afs.collection('users').doc(res.uid).valueChanges().subscribe((data)=>{
+        this.user = data
+      })
+    });
     this.initializeApp();
     this.setLanguage();
   }
 
   async initializeApp() {
     this.platform.ready()
-        .then(()=>{
+        .then(() => {
 
 
 
@@ -45,7 +62,7 @@ export class AppComponent {
 
 
 
-        })
+        });
   }
 
   setLanguage() {

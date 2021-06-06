@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar mode="ios" color="primary">
+    <ion-title>Notifications </ion-title>
+    <ion-buttons  slot="start">
+      <ion-menu-toggle [autoHide]="true">   <ion-icon size="large" name="menu"></ion-icon></ion-menu-toggle>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item routerLink="/{{u.page}}" detail="" lines="full" *ngFor="let u of notifications">
+      <ion-avatar slot="start">
+       <ion-icon color="primary"  size="large" name="notifications"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        {{u.message}}
+      </ion-label>
+<ion-note slot="end">{{u.time|amTimeAgo}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
