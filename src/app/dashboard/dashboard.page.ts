@@ -54,16 +54,14 @@ export class DashboardPage implements OnInit {
 
 
         }
-        else {
 
-
-
-        }
         if (data.role == 'Lecturer'){
           this.afs.collection('materials',ref => ref.where('department','==',data.department).orderBy('date','asc')).valueChanges({idField:'docid'}).subscribe((data)=>{
             this.materials = data
           });
-
+          this.afs.collection('users',ref => ref.where('role','==','Student').where('department','==',data.department)).valueChanges({idField:"docicd"}).subscribe((data:any)=>{
+            this.students = data.length;
+          });
           this.afs.collection('materials',ref => ref.where('status','==','approved').where('uid','==',this.uid)).valueChanges({idField:'docid'}).subscribe((data)=>{
             this.approved = data.length
           });
